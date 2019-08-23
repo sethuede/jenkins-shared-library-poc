@@ -11,6 +11,7 @@ def call() {
       sh "echo $BUILD_NUMBER"
       sh "echo ${p.branch}"
       sh "echo ${p.test}"
+      sh "echo ${p.Branch}"
     }
     
     
