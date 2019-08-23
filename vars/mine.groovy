@@ -1,7 +1,7 @@
 def call() {
   node {
     def p = pipelineCfg()
-         sh "echo ${p.branch}"
+         sh "echo p.branch"
      
     stage('Checkout') {
       sh "echo ${p.appname}"
