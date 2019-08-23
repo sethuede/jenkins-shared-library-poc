@@ -12,7 +12,7 @@ def call() {
       sh "echo ${p.branch}"
       sh "echo ${p.test}"
       sh "echo ${p.Branch}"
-      git branch: ${p.branch}, url: https://github.com/durgaprasad444/source-code-poc.git
+      
     }
     
     
