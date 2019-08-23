@@ -1,5 +1,8 @@
 def call() {
   node {
+     stage('Checkout') {
+      checkout scm
+    }
   
 
     def p = pipelineCfg()
