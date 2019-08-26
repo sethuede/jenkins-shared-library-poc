@@ -1,6 +1,7 @@
 def call() {
   node {
     def p = pipelineCfg()
+         sh "cd /var/lib/jenkins/workspace/${JOB_NAME}/"
          sh "echo ${p.branch}"
          sh "echo ${p.test}"
      
