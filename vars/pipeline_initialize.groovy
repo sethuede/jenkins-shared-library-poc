@@ -1,7 +1,7 @@
 def call() {
   node {
      stage('Checkout') {
-      sh "/var/lib/jenkins/workspace/${JOB_NAME}/"
+      sh "cd /var/lib/jenkins/workspace/${JOB_NAME}/"
     }
   
 
