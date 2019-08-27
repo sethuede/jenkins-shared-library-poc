@@ -2,7 +2,7 @@ def call() {
   node {
     def p = pipelineCfg()
        checkout([$class: 'GitSCM',
-                 branches: [[name: '*/' + ${p.branch}]],
+                 branches: [[name: '*/${p.branch}']],
         doGenerateSubmoduleConfigurations: false,
         extensions: [],
         submoduleCfg: [],
