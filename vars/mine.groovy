@@ -1,8 +1,9 @@
 def call() {
   node {
+    
+    def p = pipelineCfg()
     def branch = p.branch
     def jobname = p.jobName
-    def p = pipelineCfg()
        checkout([$class: 'GitSCM',
                  branches: [[name: '*/${branch}']],
         doGenerateSubmoduleConfigurations: false,
