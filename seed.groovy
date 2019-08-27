@@ -1,10 +1,18 @@
-@Library('jenkins-shared-library-poc') _
+def createfoldername(jobName) {
+  
+   folder(jobName) {
+       displayName(jobName)
+       description(jobName)
+}
+}
+def durga() {
+  def foldername = jobName
+createfoldername(foldername)
+}
+durga()
 def createDeploymentJob(jobName, repoUrl) {
     pipelineJob(jobName) {
-         parameters{
-    stringParam('ENV', '', 'What environment?')
-    
-}
+        
         definition {
             cpsScm {
                 scm {
@@ -12,7 +20,7 @@ def createDeploymentJob(jobName, repoUrl) {
                         remote {
                             url(repoUrl)
                         }
-                        branches('master')
+                        branches("*/" + branch)
                         extensions {
                             cleanBeforeCheckout()
                         }
@@ -23,17 +31,12 @@ def createDeploymentJob(jobName, repoUrl) {
         }
     }
 }
-
-
-
 def buildPipelineJobs() {
-    def repo = "https://durga444@bitbucket.org/durga444/"
+    def repo = "https://github.com/durgaprasad444/"
     def repoUrl = repo + jobName + ".git"
-    def deployName = jobName + "_deploy"
-    def testName = jobName + "_test"
-
-    createDeploymentJob(deployName, repoUrl)
+    def branchname = branch.replaceAll('/','-')
+    def deployName = jobName + "/" + branchname + "_pipeline"
     
+    createDeploymentJob(deployName, repoUrl)
 }
-
 buildPipelineJobs()
