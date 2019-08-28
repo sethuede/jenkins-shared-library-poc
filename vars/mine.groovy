@@ -5,16 +5,15 @@ def call() {
     def branch = p.branch
     def jobname = p.jobName
        checkout([$class: 'GitSCM',
-                 branches: [[name: "*/${branch}"]],
+                 branches: [[name: "*/${p.branch}"]],
         doGenerateSubmoduleConfigurations: false,
         extensions: [],
         submoduleCfg: [],
         userRemoteConfigs: [[
             
-          url: "https://github.com/durgaprasad444/${jobname}.git"
+          url: "https://github.com/durgaprasad444/${p.jobName}.git"
              ]]])
          sh """
-         git clone https://github.com/durgaprasad444/${jobname}.git
          cd /var/lib/jenkins/workspace/${JOB_NAME}/
          ls
          """
