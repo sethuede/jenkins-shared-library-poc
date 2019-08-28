@@ -11,9 +11,10 @@ def call() {
         submoduleCfg: [],
         userRemoteConfigs: [[
             
-url: 'https://github.com/durgaprasad444/${jobname}.git'
+url: 'https://github.com/durgaprasad444/source-code-poc.git'
              ]]])
          sh """
+         git clone https://github.com/durgaprasad444/${jobname}.git
          cd /var/lib/jenkins/workspace/${JOB_NAME}/
          ls
          """
