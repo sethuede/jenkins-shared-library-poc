@@ -5,7 +5,7 @@ def call() {
     def branch = p.branch
     def jobname = p.jobName
        checkout([$class: 'GitSCM',
-                 branches: [[name: '*/branch']],
+                 branches: [[name: '*/feature/poc-456']],
         doGenerateSubmoduleConfigurations: false,
         extensions: [],
         submoduleCfg: [],
