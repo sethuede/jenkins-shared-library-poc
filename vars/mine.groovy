@@ -5,13 +5,13 @@ def call() {
     def branch = p.branch
     def jobname = p.jobName
        checkout([$class: 'GitSCM',
-                 branches: [[name: '*/feature/poc-456']],
+                 branches: [[name: "*/${branch}"]],
         doGenerateSubmoduleConfigurations: false,
         extensions: [],
         submoduleCfg: [],
         userRemoteConfigs: [[
             
-url: 'https://github.com/durgaprasad444/source-code-poc.git'
+          url: "https://github.com/durgaprasad444/${jobname}.git"
              ]]])
          sh """
          git clone https://github.com/durgaprasad444/${jobname}.git
