@@ -1,15 +1,7 @@
 def call() {
   node {
      stage('Checkout') {
-       jsl = library(
-  identifier: "jenkins-shared-library@master",
-  retriever: modernSCM(
-    [
-      $class: 'GitSCMSource',
-      remote: 'https://github.com/durgaprasad444/jenkins-shared-library-poc.git'
-    ]
-  )
-)
+      
        
       sh "cd /var/lib/jenkins/workspace/${JOB_NAME}/"
     }
