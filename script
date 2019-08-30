@@ -3,8 +3,9 @@ pipeline {
      stages {
             stage('Stage 2') {
                 steps {
-                
+                checkout scm
                     sh """
+                    cd /var/lib/jenkins/workspace/${JOB_NAME}/
                     ls
                     ls -l
                     """
