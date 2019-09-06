@@ -15,7 +15,7 @@ def call() {
           url: "https://github.com/durgaprasad444/${p.jobName}.git"
              ]]])
          sh """
-         cd /var/lib/jenkins/workspace/${JOB_NAME}/
+         
          ls
          echo $(basename $(dirname $JOB_NAME))
          """
