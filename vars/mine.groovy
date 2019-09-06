@@ -5,7 +5,7 @@ def call() {
     def branch = p.branch
     def jobname = p.jobName
     def test = ${JOB_NAME}
-    def [name, value] = test.split("/")
+    def (name, value) = test.split("/")
        checkout([$class: 'GitSCM',
                  branches: [[name: "*/${p.branch}"]],
         doGenerateSubmoduleConfigurations: false,
