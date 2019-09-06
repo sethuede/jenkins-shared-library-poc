@@ -4,6 +4,7 @@ def call() {
     def p = pipelineCfg()
     def branch = p.branch
     def jobname = p.jobName
+    
        checkout([$class: 'GitSCM',
                  branches: [[name: "*/${p.branch}"]],
         doGenerateSubmoduleConfigurations: false,
@@ -16,6 +17,7 @@ def call() {
          sh """
          cd /var/lib/jenkins/workspace/${JOB_NAME}/
          ls
+         echo $(basename $(dirname $JOB_NAME))
          """
          sh "echo ${p.branch}"
          sh "echo ${p.test}"
