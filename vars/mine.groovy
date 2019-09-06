@@ -1,5 +1,6 @@
 def call() {
   node {
+    stage('test') {
     checkout scm
     def test = JOB_NAME
     def (name, value) = test.split("/")
@@ -18,4 +19,5 @@ def call() {
          sh "echo ${p.test}"
         
   }
+}
 }
