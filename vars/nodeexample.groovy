@@ -1,9 +1,6 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
+def call() {
+  node {    
+    def p = pipelineCfg()
                 sh """
                 cd ${JOB_NAME}
                 echo 'Building..'
@@ -12,10 +9,4 @@ pipeline {
             }
         }
         
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
-}
+   
