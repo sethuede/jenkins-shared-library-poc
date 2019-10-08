@@ -11,25 +11,28 @@ createfoldername(foldername)
 }
 durga()
 def createDeploymentJob(jobName, repoUrl) {
-    pipelineJob(jobName) {
-        
-        definition {
-            cpsScm {
-                scm {
-                    git {
-                        remote {
-                            url(repoUrl)
-                        }
-                        branches("*/" + branch)
-                        extensions {
-                            cleanBeforeCheckout()
-                        }
-                    }
-                }
-                scriptPath("myfile")
-            }
-        }
+pipelineJob(jobName) {
+  definition {
+    cps {
+      script('''
+jsl = library(
+  identifier: "jenkins-shared-library@master",
+  retriever: modernSCM(
+    [
+      $class: 'GitSCMSource',
+      remote: 'https://github.com/durgaprasad444/jenkins-shared-library-poc.git',
+      credentialsId: 'git_cred'
+    ]
+  )
+)
+
+pipeline_initialize()
+    
+      '''.stripIndent())
+      sandbox()     
     }
+  }
+}
 }
 def buildPipelineJobs() {
     def repo = "https://github.com/durgaprasad444/"
