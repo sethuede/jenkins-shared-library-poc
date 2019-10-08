@@ -1,21 +1,12 @@
-pipeline {
-    agent any
-
-    stages {
-        stage('Build') {
-            steps {
+def call() {
+  node {    
+    def p = pipelineCfg()
+    stage('Build') {
                 sh """
-                cd ${JOB_NAME}
+                cd /var/lib/jenkins/workspace/${JOB_NAME}/
                 echo 'Building..'
-                docker build -t durgaprasad444/${appname}:v1 .
+                docker build -t durgaprasad444/${p.appname}:v1 .
                 """
-            }
-        }
-        
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
     }
-}
+            }
+        }
