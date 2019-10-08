@@ -4,7 +4,7 @@ def call() {
                 sh """
                 cd ${JOB_NAME}
                 echo 'Building..'
-                docker build -t durgaprasad444/${appname}:v1 .
+                docker build -t durgaprasad444/${p.appname}:v1 .
                 """
             }
         }
